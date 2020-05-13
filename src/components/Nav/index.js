@@ -3,13 +3,23 @@ import React from 'react';
 import './style.scss';
 
 const Nav = () => (
-  <nav>
+  <nav className="nav-menu">
     <ul>
-      <li><a>Accueil</a></li>
-      <li><a>Angular</a></li>
-      <li><a>React</a></li>
-      <li><a>O'clock</a></li>
-      <li><a>Autre</a></li>
+      <li className="nav-menu-item">
+        <a className="nav-menu-link">Accueil</a>
+      </li>
+      <li className="nav-menu-item">
+        <a className="nav-menu-link">Angular</a>
+      </li>
+      <li className="nav-menu-item">
+        <a className="nav-menu-link">React</a>
+      </li>
+      <li className="nav-menu-item">
+        <a className="nav-menu-link">O'clock</a>
+      </li>
+      <li className="nav-menu-item">
+        <a className="nav-menu-link">Autre</a>
+      </li>
     </ul>
   </nav>
 );

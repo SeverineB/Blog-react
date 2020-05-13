@@ -1,0 +1,10 @@
+@import 'src/styles/vars';
+
+h1 {
+  text-align: center;
+  font-family: $title-font;
+  font-weight: $title-font-weight;
+  color: $primary-color;
+  font-size: 1.8em;
+  padding: $gutter;
+}
