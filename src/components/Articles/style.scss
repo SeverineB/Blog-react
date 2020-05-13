@@ -4,14 +4,16 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  overflow: hidden;
   //border: 1px solid red;
   //background-color: #ddd;
 }
 
 .article {
+  background-color: $light-color;
   //border: 1px solid rgb(66, 155, 190);
-  width: 300px;
-  height: 250px;
+  width: 320px;
+  height: 350px;
   padding: $gutter;
 
   &:hover {

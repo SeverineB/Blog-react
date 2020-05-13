@@ -1,27 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const Nav = () => (
+const Nav = ({ categories }) => (
   <nav className="nav-menu">
     <ul>
-      <li className="nav-menu-item">
-        <a className="nav-menu-link" href="">Accueil</a>
-      </li>
-      <li className="nav-menu-item">
-        <a className="nav-menu-link" href="">Angular</a>
-      </li>
-      <li className="nav-menu-item">
-        <a className="nav-menu-link" href="">React</a>
-      </li>
-      <li className="nav-menu-item">
-        <a className="nav-menu-link" href="">O'clock</a>
-      </li>
-      <li className="nav-menu-item">
-        <a className="nav-menu-link" href="">Autre</a>
-      </li>
+      {categories.map((category) => (
+        <li key={category.label} className="nav-menu-item">
+          <a className="nav-menu-link" href={category.route}>{category.label}</a>
+        </li>
+      ))}
     </ul>
   </nav>
 );
+
+Nav.propTypes = {
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      route: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};
 
 export default Nav;

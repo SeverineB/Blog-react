@@ -11,15 +11,25 @@ import Notfound from 'src/components/Notfound';
 
 import './styles.scss';
 
+import categories from 'src/data/categories';
+import posts from 'src/data/posts';
+
 // == Composant
-const App = () => (
-  <div className="app">
-    <Nav />
-    <Header />
-    <Articles />
-    <Footer />
-  </div>
-);
+// eslint-disable-next-line react/prefer-stateless-function
+class App extends React.Component {
+
+  render() {
+    return (
+      <div className="app">
+        <Nav categories={categories} />
+        <Header />
+        <Articles posts={posts} />
+        <Notfound />
+        <Footer />
+      </div>
+    );
+}
+}
 
 // == Export
 export default App;
