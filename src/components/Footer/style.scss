@@ -1,0 +1,18 @@
+@import 'src/styles/vars';
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8em;
+  background-color: $dark-color;
+  margin-top: $gutter;
+  
+  &-content {
+    font-family: $global-font;
+    font-weight: $global-font-weight;
+    font-size: 0.9em;
+    text-align: center;
+    color: white;
+  }
+}

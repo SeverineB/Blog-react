@@ -7,6 +7,7 @@ import Nav from 'src/components/Nav';
 import Header from 'src/components/Header';
 import Articles from 'src/components/Articles';
 import Footer from 'src/components/Footer';
+import Notfound from 'src/components/Notfound';
 
 import './styles.scss';
 
