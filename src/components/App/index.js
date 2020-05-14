@@ -37,7 +37,20 @@ const App = () => {
   };
 
   const loadGetRequest = () => {
-    
+    const axios = require('axios');
+
+    axios.get('https://oclock-open-apis.now.sh/api/blog/posts')
+      .then(function (response) {
+       
+        console.log(response.data);
+      })
+      .catch(function (error) {
+          console.log(error);
+      })
+      .then(function () {
+        setPosts(postsData);
+        setLoading(false);
+  });
   };
 
   // state version class
