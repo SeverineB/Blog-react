@@ -1,0 +1,34 @@
+@import 'src/styles/vars';
+
+.post {
+  padding: $gutter;
+  width: 100%;
+
+  @media (min-width: 600px) {
+    width: 50%;
+  }
+
+  &-title {
+    font-family: $title-font;
+    font-weight: $title-font-weight;
+    color: $title-color;
+    text-transform: uppercase;
+    font-size: 1.3em;
+    margin-bottom: 0.5rem;
+  }
+
+  &-category {
+    background-color: $primary-color;
+    color: $light-color;
+    display: inline-block;
+    padding: 0.3rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-size: 0.8em;
+  }
+
+  &-excerpt {
+    font-weight: 300;
+    color: $post-text-color;
+  }
+}

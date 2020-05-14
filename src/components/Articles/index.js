@@ -1,21 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-/* import Article from './Article'; */
-
 import './style.scss';
 
-import Article from './Article';
+import Article from 'src/components/Article';
 
 const Articles = ({ posts }) => (
-  <ul className="articles-list">
-    {posts.map((post) => (
-      <Article
-        key={post.id}
-        {...post}
-      />
-    ))}
-  </ul>
+  <div className="articles">
+    <h1 className="articles-title">Dev of Thrones</h1>
+    <div className="articles-list">
+      { posts.map((post) => (
+        <Article
+          key={post.id}
+          {...post}
+        />
+      ))}
+    </div>
+  </div>
 );
 
 Articles.propTypes = {

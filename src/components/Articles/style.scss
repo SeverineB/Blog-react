@@ -1,46 +1,17 @@
 @import 'src/styles/vars';
 
-.articles-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  overflow: hidden;
-  //border: 1px solid red;
-  //background-color: #ddd;
-}
-
-.article {
-  background-color: $light-color;
-  //border: 1px solid rgb(66, 155, 190);
-  width: 320px;
-  height: 350px;
+.articles {
   padding: $gutter;
-
-  &:hover {
-    background-color: $post-hover-color;
-  }
   &-title {
+    color: $primary-color;
+    font-size: 2em;
+    text-align: center;
+    text-transform: uppercase;
     font-family: $title-font;
     font-weight: $title-font-weight;
-    font-size: 1.2em;
-    margin-bottom: 0.4em;
   }
-
-  &-category {
-    width: 3em;
-    background-color: $primary-color;
-    color: white;
-    font-family: $global-font;
-    font-size: 0.8em;
-    font-weight: $global-font-weight;
-    padding: 0.4em;
-  }
-
-  &-content {
-    font-family: $global-font;
-    font-size: 0.9em;
-    font-weight: $global-font-weight;
-    color: $post-text-color;
-    margin-top: 0.4em;
+  &-list {
+    display: flex;
+    flex-wrap: wrap;
   }
 }
