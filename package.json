@@ -47,9 +47,11 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "dompurify": "^2.0.11",
     "prop-types": "*",
     "react": "*",
     "react-dom": "*",
+    "react-loader-spinner": "^3.1.14",
     "react-router-dom": "^5.2.0"
   }
 }

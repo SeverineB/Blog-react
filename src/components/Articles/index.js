@@ -4,27 +4,32 @@ import PropTypes from 'prop-types';
 import './style.scss';
 
 import Article from 'src/components/Article';
+import usePageTitle from 'src/hooks/usePageTitle';
 
-const Articles = ({ posts }) => (
-  <div className="articles">
-    <h1 className="articles-title">Dev of Thrones</h1>
-    <div className="articles-list">
-      { posts.map((post) => (
-        <Article
-          key={post.id}
-          {...post}
-        />
-      ))}
+const Posts = ({ posts, category }) => {
+  usePageTitle(category);
+  return (
+    <div className="posts">
+      <h1 className="posts-title">Dev of Thrones - {category}</h1>
+      <div className="posts-list">
+        { posts.map((post) => (
+          <Article
+            key={post.id}
+            {...post}
+          />
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
-Articles.propTypes = {
+Posts.propTypes = {
   posts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
     }),
   ).isRequired,
+  category: PropTypes.string.isRequired,
 };
 
-export default Articles;
+export default Posts;

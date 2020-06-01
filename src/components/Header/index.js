@@ -7,9 +7,8 @@ import './style.scss';
 const Header = ({ categories }) => (
   <header className="header">
     <nav className="menu">
-      {/* boucle sur les categories pour récupérer construire le menu */}
+      {/* map on categories to build menu */}
       {categories.map(({ label, route }) => (
-        // Link vient changer le path de l'URL et rajouter une entrée à l'objet history
         <NavLink
           key={label}
           to={route}

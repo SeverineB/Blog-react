@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import axios from 'axios';
+
+// utilisation d'un composant tout fait fourni par une librairie
+// https://www.npmjs.com/package/react-loader-spinner
+import Loader from 'react-loader-spinner';
+
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 // --- composants
 import Header from 'src/components/Header';
-import Articles from 'src/components/Articles';
+import Posts from 'src/components/Articles';
 import Footer from 'src/components/Footer';
-import NotFound from 'src/components/Notfound';
+import NotFound from 'src/components/NotFound';
+import Preferences from 'src/components/Preferences';
 
 import './styles.scss';
 
 import categoriesData from 'src/data/categories';
-import postsData from 'src/data/posts';
 
-// fonction qui retourne les posts filtrés par catégories
+// return filtered posts by category
 const getPostsByCategory = (category, posts) => {
-  // on retourne tous les posts quand on est sur la catégorie accueil
   if (category === 'Accueil') {
     return posts;
   }
@@ -27,55 +33,50 @@ const App = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const [dark, setDark] = useState(false);
+
   const fetchPostsEffect = () => {
     setLoading(true);
-    setTimeout(() => {
-      // on sauvegarde les posts dans le state du composant
-      setPosts(postsData);
-      setLoading(false);
-    }, 2000);
-  };
-
-  const loadGetRequest = () => {
-    const axios = require('axios');
-
     axios.get('https://oclock-open-apis.now.sh/api/blog/posts')
-      .then(function (response) {
-       
-        console.log(response.data);
+      .then((response) => {
+        setPosts(response.data);
       })
-      .catch(function (error) {
-          console.log(error);
+      .catch((error) => {
+        console.error(error);
       })
-      .then(function () {
-        setPosts(postsData);
+      .finally(() => {
         setLoading(false);
-  });
+      });
   };
 
-  // state version class
-  // const state = {
-  //   count: 0,
-  //   posts: 0,
-  //   loading: false,
-  // }
-  // setState({count: 1})
+
+  useEffect(() => {
+    fetchPostsEffect();
+  }, []);
 
   return (
-    <div className="blog">
-      <button type="button" onClick={() => { fetchPostsEffect(); loadGetRequest(); }}>Load Data</button>
+    <div className={dark ? 'blog blog--dark' : 'blog'}>
       <Header categories={categoriesData} />
-      {loading && <div>loader</div>}
+      {loading && (
+        <Loader
+          type="Puff"
+          color="#00BFFF"
+          height={100}
+          width={100}
+          timeout={3000}
+        />
+      )}
       {!loading && (
         <Switch>
           <Redirect from="/jquery" to="/react" />
-          {/* on va boucler sur les catégories pour avoir une route à chaque
-          et ce composant Route affichera les posts filtrés  */}
           { categoriesData.map(({ route, label }) => (
             <Route key={label} exact path={route}>
-              <Articles posts={getPostsByCategory(label, posts)} />
+              <Posts category={label} posts={getPostsByCategory(label, posts)} />
             </Route>
           ))}
+          <Route exact path="/preferences">
+            <Preferences darkValue={dark} changeDarkValue={setDark} />
+          </Route>
           <Route><NotFound /></Route>
         </Switch>
       )}
