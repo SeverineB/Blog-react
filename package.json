@@ -53,5 +53,6 @@
     "react-dom": "*",
     "react-loader-spinner": "^3.1.14",
     "react-router-dom": "^5.2.0"
-  }
+  },
+  "homepage": "http://blog-react.severinebianchi.com"
 }
