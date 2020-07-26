@@ -32,12 +32,11 @@ const getPostsByCategory = (category, posts) => {
 const App = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
-
   const [dark, setDark] = useState(false);
 
   const fetchPostsEffect = () => {
     setLoading(true);
-    axios.get('https://oclock-open-apis.now.sh/api/blog/posts')
+    axios.get('http://blog-react-server.severinebianchi.com/posts')
       .then((response) => {
         setPosts(response.data);
       })

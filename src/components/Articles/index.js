@@ -8,6 +8,7 @@ import usePageTitle from 'src/hooks/usePageTitle';
 
 const Posts = ({ posts, category }) => {
   usePageTitle(category);
+  console.log('category dans articles vaut', category);
   return (
     <div className="posts">
       <h1 className="posts-title">Dev of Thrones - {category}</h1>

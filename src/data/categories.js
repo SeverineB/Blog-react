@@ -13,7 +13,7 @@ export default [
   },
   {
     route: '/oclock',
-    label: 'O’clock',
+    label: 'O\'clock',
   },
   {
     route: '/autre',

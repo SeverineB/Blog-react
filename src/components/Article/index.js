@@ -16,17 +16,21 @@ const createMarkup = (dirtyHTML) => {
   };
 };
 
-const Post = ({ category, title, excerpt }) => (
+const Post = ({ category, title, excerpt }) => {
+  console.log('category dans l\'article vaut', category);
+  const newCat = category.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
+  console.log('newCat vaut', newCat);
+  return (
   <div className="post">
     <h2 className="post-title">{title}</h2>
     {/* ajout d'un lien sur les catégories qui nous permet de retourner sur la bonne URL */}
-    <Link to={category.toLowerCase()}><div className="post-category">{category}</div></Link>
+    <Link to={newCat.toLowerCase()}><div className="post-category">{category}</div></Link>
     <p
       className="post-excerpt"
       dangerouslySetInnerHTML = {createMarkup(excerpt)}
     />
   </div>
-);
+)};
 
 Post.propTypes = {
   category: PropTypes.string.isRequired,
