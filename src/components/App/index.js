@@ -28,7 +28,6 @@ const getPostsByCategory = (category, posts) => {
   return filteredPosts;
 };
 
-
 const App = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
